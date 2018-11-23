@@ -21,5 +21,28 @@
     <string name="title_activity_login_chat">Sign in</string>
     <string name="todo">TODO</string>
     <string name="cargando">Cargando</string>
-    <string name="todo">TODO</string>
+    <string name="password">Password</string>
+    <string name="ingresa_tu_apellido">Ingresa tu apellido</string>
+    <string name="ingresa_tu_nombre">Ingresa tu nombre</string>
+    <string name="registrate">Registrate</string>
+    <string name="ingresa_un_nombre_para_tu_usuario">Ingresa un nombre para tu usuario</string>
+    <string name="ingresa_una_contrase_a_valida">Ingresa una contraseña valida</string>
+    <string name="reigstrarme">Reigstrarme</string>
+    <string name="telefono">Telefono</string>
+    <string name="cumplea_os">Cumpleaños</string>
+    <string name="ingresa_un_e_mail_valido">Ingresa un E-mail Valido</string>
+    <string name="sign_in">Sign In</string>
+    <string name="aun_no_tienes_una_cuenta_registrate">Aun no tienes una cuenta? Registrate!</string>
+
+    <string name="title_activity_prueba">Prueba</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="bienvenido">Bienvenido!</string>
+    <string name="contactos">Contactos</string>
+    <string name="chats">Chats</string>
+    <string name="titulo_frase">Titulo Frase</string>
+    <string name="p">P</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

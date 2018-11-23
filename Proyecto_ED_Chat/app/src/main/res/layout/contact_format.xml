@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,39 +11,44 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/previewmessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="143dp"
-            android:text="Texto Frase"
-            android:textColor="#000000" />
-
-        <TextView
             android:id="@+id/Name"
-            android:layout_width="wrap_content"
+            android:layout_width="177dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="124dp"
-            android:text="Titulo Frase"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="45dp"
+            android:text="@string/titulo_frase"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#1cadfa"
             android:textSize="21sp" />
 
+        <TextView
+            android:id="@+id/Temporal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="61dp"
+            android:text="@string/p"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/ContactImage"
-            android:layout_width="71dp"
-            android:layout_height="match_parent"
+            android:layout_width="62dp"
+            android:layout_height="57dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
             android:adjustViewBounds="true"
             android:background="@drawable/photocircle"
+            android:contentDescription="@string/todo"
             android:cropToPadding="false"
             android:maxHeight="35dp"
             android:maxWidth="74dp" />
 
     </RelativeLayout>
+
 </LinearLayout>
