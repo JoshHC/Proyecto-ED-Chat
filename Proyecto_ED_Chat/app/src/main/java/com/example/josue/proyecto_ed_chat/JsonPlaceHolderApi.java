@@ -27,9 +27,6 @@ public interface JsonPlaceHolderApi
     @POST("user/registro")
      Call<ResponseBody> POSTUser(@Body Usuario NewUser);
 
-    /*@POST("user/login")
-    Call<ResponseBody> Login(@Body String NewUser);*/
-
     //Validacion del Login para el Usuario
     @POST("user/login")
     Call<ResponseBody> Login(@Body UsuarioLogin NewUser);

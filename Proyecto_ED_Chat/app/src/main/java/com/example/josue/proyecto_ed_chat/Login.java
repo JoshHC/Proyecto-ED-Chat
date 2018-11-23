@@ -113,6 +113,7 @@ public class Login extends AppCompatActivity {
                     SharedPreferences.Editor myEditor = myPreferences.edit();
                     //Se Guarda el Token Obtenido
                     myEditor.putString("Token", token);
+                    myEditor.putString("Username",Username.getText().toString());
                     myEditor.commit();
                     try {
                         Thread.sleep(5000);

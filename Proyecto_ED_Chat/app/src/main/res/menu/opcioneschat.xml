@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/Actualizar"
+        android:title="@string/actualizar" />
+    <item
+        android:id="@+id/AdjuntarArchivos"
+        android:title="@string/adjuntararchivos" />
+</menu>
