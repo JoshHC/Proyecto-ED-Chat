@@ -23,15 +23,11 @@ public class Mensaje
     public Mensaje(String mensaje, String emisor,String receptor, boolean pertenecealusuariologeado) {
         SDES Cifrado = new SDES();
 
-        this.mensaje = mensaje;
         Emisor = emisor;
         Receptor = receptor;
 
-        String ClaveCifrado;
-        ClaveCifrado = GenerarClaveCifrado(Emisor, Receptor);
-
-        String MensajeCifrado;
-        MensajeCifrado = Cifrado.Cifrar(this.mensaje, ClaveCifrado);
+        String ClaveCifrado = GenerarClaveCifrado(Emisor, Receptor);
+        this.mensaje = Cifrado.Cifrar(mensaje, ClaveCifrado);
 
         this.pertenecealusuariologeado = pertenecealusuariologeado;
     }
