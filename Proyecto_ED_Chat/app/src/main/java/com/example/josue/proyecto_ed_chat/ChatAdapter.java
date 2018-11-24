@@ -6,16 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ContactoAdapter extends BaseAdapter {
+public class ChatAdapter extends BaseAdapter {
 
     protected Activity activity;
-    protected ArrayList<Contacto> items;
+    protected List<Conversacion> items;
 
-    public ContactoAdapter(Activity activity, ArrayList<Contacto> items) {
+    public ChatAdapter(Activity activity,List<Conversacion> items) {
         this.activity = activity;
         this.items = items;
     }
@@ -31,7 +33,7 @@ public class ContactoAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return position;
+        return null;
     }
 
     @Override
@@ -53,11 +55,11 @@ public class ContactoAdapter extends BaseAdapter {
             v = inf.inflate(R.layout.contact_format, null);
         }
 
-        Contacto dir = items.get(position);
+        Conversacion dir = items.get(position);
 
         TextView Nombre = (TextView) v.findViewById(R.id.Name);
-        Nombre.setText(dir.getName());
-        char [] Auxiliar =  dir.getName().toCharArray();
+        Nombre.setText(dir.getReceptor());
+        char [] Auxiliar =  dir.getReceptor().toCharArray();
         TextView Temporal = (TextView) v.findViewById(R.id.Temporal);
         Temporal.setText(String.valueOf(Auxiliar[0]));
         return v;

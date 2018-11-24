@@ -34,7 +34,7 @@ public class SplashScreen extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        //instancia retrofit
+        //INSTANCIA RETROFIT
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.43.233:3000")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -46,7 +46,6 @@ public class SplashScreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Se Valida el Token, Si ya Vencio se le envia a Login, Sino se le envia a Chats y se deben de cargar sus Datos.
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -68,7 +67,7 @@ public class SplashScreen extends AppCompatActivity {
                 {
                     Toast.makeText(getApplication().getBaseContext(),"La Sesion ha Expirado" ,Toast.LENGTH_SHORT).show();
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -77,7 +76,7 @@ public class SplashScreen extends AppCompatActivity {
 
                 }else
                 {
-                    Toast.makeText(getApplication().getBaseContext(),"Su Sesion Sigue Activa... Cargando" ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication().getBaseContext(),"Su Sesion Sigue Activa" ,Toast.LENGTH_SHORT).show();
                     String token = "";
                     try {
                         token = response.body().string();
@@ -92,7 +91,7 @@ public class SplashScreen extends AppCompatActivity {
                     myEditor.putString("Token", token);
                     myEditor.commit();
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

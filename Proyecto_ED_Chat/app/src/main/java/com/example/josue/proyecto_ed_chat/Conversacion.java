@@ -14,6 +14,11 @@ public class Conversacion
         Mensajes = mensajes;
     }
 
+    public Conversacion()
+    {
+
+    }
+
     public String getEmisor() {
         return Emisor;
     }
@@ -36,6 +41,11 @@ public class Conversacion
 
     public void setMensajes(List<Mensaje> mensajes) {
         Mensajes = mensajes;
+    }
+
+    public void addMensaje(Mensaje mensaje)
+    {
+        Mensajes.add(mensaje);
     }
 }
 

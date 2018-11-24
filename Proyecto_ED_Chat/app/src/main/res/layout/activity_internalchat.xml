@@ -9,12 +9,12 @@
     android:clipToPadding="false"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".InternalChat">
 
     <ListView
         android:id="@+id/messages_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="485dp"
         android:layout_weight="2"
         android:divider="#fff" />
 
@@ -26,7 +26,7 @@
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="0dp"
+            android:layout_width="331dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:ems="10"
@@ -43,8 +43,9 @@
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/icon3"
             android:padding="20dp"
-            android:scaleType="fitCenter" />
-        //android:onClick="sendMessage"/>
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/todo" />
+
     </LinearLayout>
 
 </LinearLayout>

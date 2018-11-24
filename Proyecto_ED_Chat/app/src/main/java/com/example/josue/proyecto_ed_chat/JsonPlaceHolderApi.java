@@ -8,6 +8,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface JsonPlaceHolderApi
@@ -16,8 +17,16 @@ public interface JsonPlaceHolderApi
     @GET ("user")
     Call<List<Usuario>> getUsers();
 
-    @GET("user/mensajes")
-    Call<List<Conversacion>> getMensajes();
+    //Ingresar/Obtener la lista de conversaciones
+    @POST("user/conversacion")
+    Call<Conversacion> POSTConversacion(@Body Conversacion NewConversacion);
+
+    //Ingresar/Obtener la lista de conversaciones
+    @PUT    ("user/mensajes")
+    Call<Conversacion> POSTMenssajes(@Body Conversacion NewConversacion);
+
+    @GET("user/all/conversations")
+    Call<List<Conversacion>> GetMensajes();
 
     //Para Obtener un Usuario en Especifico
     @GET ("user/{username}")

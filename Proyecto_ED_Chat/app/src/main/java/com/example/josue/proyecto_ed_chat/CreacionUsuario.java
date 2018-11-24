@@ -37,7 +37,7 @@ public class CreacionUsuario extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_creacion_usuario);
 
-        //instancia retrofit
+        //INSTANCIA RETROFIT
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.43.233:3000")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -60,7 +60,7 @@ public class CreacionUsuario extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Usuario NewUser = new Usuario(Name.getText().toString(),Lastname.getText().toString(),Birthday.getText().toString(),Phone.getText().toString(),Email.getText().toString(),UserName.getText().toString(),Password.getText().toString());
-                    RegistrarUsuario(NewUser);
+                    ValidarEmail(NewUser);
                 }
             });
 
@@ -98,16 +98,16 @@ public class CreacionUsuario extends AppCompatActivity {
         });
     }
 
-    private void ValidarEmail(Usuario NuevoUsuario)
+    private void ValidarEmail(final Usuario NuevoUsuario)
     {
         Call<ResponseBody> call = jsonPlaceHolderApi.ValidarEmail(NuevoUsuario);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(!response.isSuccessful()){
-                    Toast.makeText(getApplication().getBaseContext(),"Error, Ya existe un Usuario Registrado con este Email" + response.code(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication().getBaseContext(),"Ya existe un Usuario Registrado con este Email, Porfavor ingrese otro",Toast.LENGTH_SHORT).show();
                 }else{
-
+                    RegistrarUsuario(NuevoUsuario);
                 }
             }
 

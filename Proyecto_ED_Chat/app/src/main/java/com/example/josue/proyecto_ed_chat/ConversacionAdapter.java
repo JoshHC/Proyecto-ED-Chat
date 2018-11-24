@@ -15,13 +15,16 @@ import java.util.List;
 
 public class ConversacionAdapter extends BaseAdapter
 {
-
-
+    private static LayoutInflater inflater = null;
     List<Mensaje> messages = new ArrayList<Mensaje>();
-    Context context;
+    Activity activity;
 
-    public ConversacionAdapter(Context context) {
-        this.context = context;
+    public ConversacionAdapter(Activity activity, ArrayList<Mensaje> items) {
+        this.activity = activity;
+        this.messages = items;
+
+        //Inicialización del inflater
+        inflater =(LayoutInflater) activity.getSystemService(activity.LAYOUT_INFLATER_SERVICE);
     }
 
     public void add(Mensaje message) {
@@ -44,35 +47,24 @@ public class ConversacionAdapter extends BaseAdapter
         return i;
     }
 
-    // This is the backbone of the class, it handles the creation of single ListView row (chat bubble)
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
-        MessageViewHolder holder = new MessageViewHolder();
-        LayoutInflater messageInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        Mensaje message = messages.get(i);
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (message.isPertenecealusuariologeado() == true) { // this message was sent by us so let's create a basic chat bubble on the right
-            convertView = messageInflater.inflate(R.layout.my_message, null);
-            holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
-            convertView.setTag(holder);
-            holder.messageBody.setText(message.getMensaje());
-        } else { // this message was sent by someone else so let's create an advanced chat bubble on the left
-            convertView = messageInflater.inflate(R.layout.their_message, null);
-            holder.avatar = (View) convertView.findViewById(R.id.avatar);
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
-            convertView.setTag(holder);
+        final View Emisor = inflater.inflate(R.layout.my_message,null);
+        final View Receptor = inflater.inflate(R.layout.their_message,null);
+        TextView mensajeEmisor = (TextView) Emisor.findViewById(R.id.message_body);
+        TextView mensajeReceptor = (TextView) Receptor.findViewById(R.id.message_body);
+        TextView nombreReceptor = (TextView) Receptor.findViewById(R.id.name);
+        Mensaje message = messages.get(position);
 
-            holder.name.setText(message.getEmisor());
-            holder.messageBody.setText(message.getMensaje());
+        if(message.isPertenecealusuariologeado() == true){
+            mensajeEmisor.setText(message.getMensaje());
+            return Emisor;
+        }else{
+            mensajeReceptor.setText(message.getMensaje());
+            nombreReceptor.setText("Javier");
+            return Receptor;
         }
+    }
 
-        return convertView;
     }
-    }
-    
-class MessageViewHolder {
-    public View avatar;
-    public TextView name;
-    public TextView messageBody;
-}

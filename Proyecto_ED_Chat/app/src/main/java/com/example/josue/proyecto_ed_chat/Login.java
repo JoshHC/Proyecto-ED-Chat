@@ -37,19 +37,21 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
-        //instancia retrofit
+        //INSTANCIA DE RETROFIT
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.43.233:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
+        //INICIALIZACION DE VARIABLES
         Username = findViewById(R.id.Username);
         Password = findViewById(R.id.password);
         LoginButton = findViewById(R.id.signinbutton);
         TextView Registro = findViewById(R.id.txtRegistrate);
 
 
+        //Se Redirecciona al registro de datos
         Registro.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -89,10 +91,9 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(!response.isSuccessful()){
-                    Toast.makeText(getApplication().getBaseContext(),"Error, No se ha podido iniciar sesion el usuario o la contraseña son incorrectos, Error " + response.code(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication().getBaseContext(),"Error, No se ha podido iniciar sesion el usuario o la contraseña son incorrectos",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getApplication().getBaseContext(),"Iniciando Sesion",Toast.LENGTH_SHORT).show();
-
                     String token = "";
                     try {
                         token = response.body().string();
@@ -108,6 +109,7 @@ public class Login extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                     //Se Genera y Almacena el Token
                     SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(Login.this);
                     SharedPreferences.Editor myEditor = myPreferences.edit();
@@ -116,7 +118,7 @@ public class Login extends AppCompatActivity {
                     myEditor.putString("Username",Username.getText().toString());
                     myEditor.commit();
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
