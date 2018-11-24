@@ -25,7 +25,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Chats extends Fragment implements AdapterView.OnItemClickListener{
+public class Chats extends Fragment{
 
     private List<Usuario> Contactos = new ArrayList<>();
     ListView Lista;
@@ -57,40 +57,9 @@ public class Chats extends Fragment implements AdapterView.OnItemClickListener{
         //SE OBTIENE EL EMISOR DEL MENSAJE
         Emisor = myPreferences.getString("Username","No Encontrado");
 
-        if(Lista != null) {
-            Lista.setOnItemClickListener(this);
-            return view;
-        }
-
         //SE CARGAN LAS CONVERSACIONES ASOCIADAS AL USUARIO
         GestiondeConversacion(view);
         return view;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
-    {
-                        //Se Guarda el receptor
-                        TextView NombreReceptor = view.findViewById(R.id.name);
-                        SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                        String Usuario = myPreferences.getString("Username","No Encontrado");
-                        SharedPreferences.Editor myEditor = myPreferences.edit();
-                        //Se Renueva el Token
-                        String token = myPreferences.getString("Token","no existe");
-                        VerificarUsuario(token);
-
-                        myEditor.putString("Receptor", NombreReceptor.getText().toString());
-                        myEditor.putString("Emisor", Usuario);
-                        String UsernameReceptor = myPreferences.getString("UsernameR","No Existe");
-                        myEditor.commit();
-
-                        List<Mensaje> Auxiliar = new ArrayList<>();
-                        Conversacion Nueva = new Conversacion(Usuario, UsernameReceptor,Auxiliar);
-                        CrearConversacion(Nueva);
-
-                        //Se redirige a la conversacion
-                        Intent intentc = new Intent(getActivity(), InternalChat.class);
-                        startActivity(intentc);
     }
 
     private void CrearConversacion(Conversacion Nueva)

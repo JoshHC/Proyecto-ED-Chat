@@ -20,13 +20,6 @@ public class Mensaje
         this.Receptor = receptor;
     }
 
-    public Mensaje(String mensaje, String emisor, boolean pertenecealusuariologeado) {
-        this.mensaje = mensaje;
-        //Clave Nueva = new Clave();
-        Emisor = emisor;
-        this.pertenecealusuariologeado = pertenecealusuariologeado;
-    }
-
     public Mensaje(String mensaje, String emisor,String receptor, boolean pertenecealusuariologeado) {
         this.mensaje = mensaje;
         Emisor = emisor;

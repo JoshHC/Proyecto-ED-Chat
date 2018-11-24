@@ -3,6 +3,7 @@ package com.example.josue.proyecto_ed_chat;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,8 @@ public class InternalChat extends AppCompatActivity {
     //consumibles rest api
     JsonPlaceHolderApi jsonPlaceHolderApi;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     ListView Lista;
     EditText editText;
     ImageButton BotonEnvio;
@@ -49,6 +52,8 @@ public class InternalChat extends AppCompatActivity {
         Lista = findViewById(R.id.messages_view);
         editText = findViewById(R.id.editText);
         BotonEnvio = findViewById(R.id.btnenvio);
+        getSupportActionBar().setTitle(Receptor);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
 
         //SE VALIDA EL TOKEN
         SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -60,19 +65,26 @@ public class InternalChat extends AppCompatActivity {
         Emisor = myPreferences.getString("Emisor","No Encontrado");
         Receptor= myPreferences.getString("Receptor","No Encontrado");
 
-        Mensaje Nuevo = new Mensaje(editText.getText().toString(),Emisor,true);
+        Mensaje Nuevo = new Mensaje(editText.getText().toString(),Emisor, Receptor,true);
         List<Mensaje> Auxiliar = new ArrayList<>();
         Auxiliar.add(Nuevo);
         final Conversacion Nueva = new Conversacion(Emisor, Receptor,Auxiliar);
 
         //SE GESTIONA Y SE MANDA A ACTUALIZAR LA CONVERSACION COMPLETA
         GestiondeConversacion();
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Esto se ejecuta cada vez que se realiza el gesto
+                GestiondeConversacion();
+            }
+        });
 
         BotonEnvio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String Prueba = editText.getText().toString();
-                Mensaje Nuevo = new Mensaje(editText.getText().toString(),Emisor,true);
+                Mensaje Nuevo = new Mensaje(editText.getText().toString(),Emisor,Receptor,true);
                 List<Mensaje> Auxiliar = new ArrayList<>();
                 Auxiliar.add(Nuevo);
                 //SE AÑADEN MENSAJES A LA CONVERSACION, SE ENVIAN
@@ -117,6 +129,7 @@ public class InternalChat extends AppCompatActivity {
                 if(ListaEnvio.size() != 0) {
                     final ConversacionAdapter Adaptador = new ConversacionAdapter(InternalChat.this, (ArrayList<Mensaje>) ListaEnvio);
                     Lista.setAdapter(Adaptador);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             }
 
