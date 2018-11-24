@@ -6,10 +6,13 @@ import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -35,6 +38,13 @@ public class InternalChat extends AppCompatActivity {
     ImageButton BotonEnvio;
     String Emisor;
     String Receptor;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.opcioneschat, menu);
+        return true;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

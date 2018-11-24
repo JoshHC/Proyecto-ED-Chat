@@ -7,11 +7,13 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     //consumibles rest api
     JsonPlaceHolderApi jsonPlaceHolderApi;
     android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+    //Se crea un Objeto Tipo SearchView para la Barra de Busqueda
+    SearchView Buscador;
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -53,8 +57,34 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        final int id = item.getItemId();
+        if(id == R.id.Buscar)
+        {
+
+        }else if(id == R.id.AdjuntarArchivos)
+        {
+            Toast.makeText(getApplication().getBaseContext(),"La Seccion de Adjuntar Archivos esta en Construccion" ,Toast.LENGTH_SHORT).show();
+
+        }else if (id == R.id.LogOff)
+        {
+            SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor myEditor = myPreferences.edit();
+            myEditor.putString("Token", "");
+            Intent intentc = new Intent(MainActivity.this, Login.class);
+            startActivity(intentc);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.opcioneschat, menu);
+
         return true;
     }
 

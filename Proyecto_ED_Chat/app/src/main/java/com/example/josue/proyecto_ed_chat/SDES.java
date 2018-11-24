@@ -70,7 +70,7 @@ public class SDES {
         // Cifra caracter por caracter
         for(int i = 0; i < TextoaDescifrar.length; i++)
         {
-            char letraCifrada = CifrarSDES(TextoaDescifrar[i]);
+            char letraCifrada = DescifrarSDES(TextoaDescifrar[i]);
             Salida += String.valueOf(letraCifrada);
         }
 

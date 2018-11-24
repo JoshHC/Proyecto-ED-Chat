@@ -25,7 +25,7 @@ public class ConversacionAdapter extends BaseAdapter
         this.activity = activity;
         this.messages = items;
 
-        //InicializaciÃ³n del inflater
+        //Inicialización del inflater
         inflater =(LayoutInflater) activity.getSystemService(activity.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -63,7 +63,8 @@ public class ConversacionAdapter extends BaseAdapter
 
             SDES Cifrado = new SDES();
 
-            String ClaveCifrado = GenerarClaveCifrado(message.getEmisor(), message.getReceptor());
+            //String ClaveCifrado = GenerarClaveCifrado(message.getEmisor(), message.getReceptor());
+            String ClaveCifrado = "1001000000";
             String mensaje = Cifrado.Descifrar(message.getMensaje(), ClaveCifrado);
 
             mensajeEmisor.setText(mensaje);
