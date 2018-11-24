@@ -1,14 +1,34 @@
 package com.example.josue.proyecto_ed_chat;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 public class Mensaje
 {
     private String mensaje;
     private String Emisor;
     private boolean pertenecealusuariologeado;
+    private String Receptor;
+
+    public String getReceptor() {
+        return Receptor;
+    }
+
+    public void setReceptor(String receptor) {
+
+        this.Receptor = receptor;
+    }
 
     public Mensaje(String mensaje, String emisor, boolean pertenecealusuariologeado) {
         this.mensaje = mensaje;
         Emisor = emisor;
+        this.pertenecealusuariologeado = pertenecealusuariologeado;
+    }
+
+    public Mensaje(String mensaje, String emisor,String receptor, boolean pertenecealusuariologeado) {
+        this.mensaje = mensaje;
+        Emisor = emisor;
+        Receptor = receptor;
         this.pertenecealusuariologeado = pertenecealusuariologeado;
     }
 

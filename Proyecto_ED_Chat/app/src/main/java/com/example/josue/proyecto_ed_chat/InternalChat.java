@@ -59,7 +59,6 @@ public class InternalChat extends AppCompatActivity {
         //SE OBTIENEN EL EMISOR Y EL RECEPTOR GUARDADOS EN MEMORIA
         Emisor = myPreferences.getString("Emisor","No Encontrado");
         Receptor= myPreferences.getString("Receptor","No Encontrado");
-        getSupportActionBar().setTitle(Receptor);
 
         Mensaje Nuevo = new Mensaje(editText.getText().toString(),Emisor,true);
         List<Mensaje> Auxiliar = new ArrayList<>();
@@ -108,6 +107,12 @@ public class InternalChat extends AppCompatActivity {
                     }
                 }
 
+                for (Mensaje t:ListaEnvio)
+                {
+                    t.setReceptor(Receptor);
+                }
+
+                String receptor = Receptor;
                 //SI LA LISTA ESTA VACIA NO SE ENVIA NADA
                 if(ListaEnvio.size() != 0) {
                     final ConversacionAdapter Adaptador = new ConversacionAdapter(InternalChat.this, (ArrayList<Mensaje>) ListaEnvio);
@@ -145,6 +150,11 @@ public class InternalChat extends AppCompatActivity {
                         i.setMensajes(ListadeMensajes);
                         EnviarMensaje(i);
                     }
+                }
+
+                for (Mensaje t:ListadeMensajes)
+                {
+                    t.setReceptor(Receptor);
                 }
 
                 final ConversacionAdapter Adaptador = new ConversacionAdapter(InternalChat.this, (ArrayList<Mensaje>) ListadeMensajes);

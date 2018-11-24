@@ -2,8 +2,10 @@ package com.example.josue.proyecto_ed_chat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +64,7 @@ public class ConversacionAdapter extends BaseAdapter
             return Emisor;
         }else{
             mensajeReceptor.setText(message.getMensaje());
-            nombreReceptor.setText("Javier");
+            nombreReceptor.setText(message.getReceptor());
             return Receptor;
         }
     }

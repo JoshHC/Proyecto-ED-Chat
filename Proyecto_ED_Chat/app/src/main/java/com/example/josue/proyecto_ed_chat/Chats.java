@@ -136,6 +136,41 @@ public class Chats extends Fragment implements AdapterView.OnItemClickListener{
 
                 final ChatAdapter Adaptador = new ChatAdapter(getActivity(), (ArrayList<Conversacion>) Nueva);
                 Lista.setAdapter(Adaptador);
+                Lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        //Se Guarda el receptor
+                        TextView NombreReceptor = view.findViewById(R.id.Name);
+                        SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        SharedPreferences.Editor myEditor = myPreferences.edit();
+
+                        for (Usuario x:Contactos)
+                        {
+                            if(x.getName().equals(NombreReceptor.getText().toString()))
+                            {
+                                myEditor.putString("UsernameR",x.getUsername());
+                            }
+
+                        }
+                        String Usuario = myPreferences.getString("Username","No Encontrado");
+                        //Se Renueva el Token
+                        String token = myPreferences.getString("Token","no existe");
+                        VerificarUsuario(token);
+
+                        myEditor.putString("Receptor", NombreReceptor.getText().toString());
+                        myEditor.putString("Emisor", Usuario);
+                        myEditor.commit();
+
+                        List<Mensaje> Auxiliar = new ArrayList<>();
+                        Conversacion Nueva = new Conversacion(Usuario, NombreReceptor.getText().toString(),Auxiliar);
+                        CrearConversacion(Nueva);
+
+                        //Se redirige a la conversacion
+                        Intent intentc = new Intent(getActivity(), InternalChat.class);
+                        startActivity(intentc);
+                    }
+                });
             }
 
             @Override
