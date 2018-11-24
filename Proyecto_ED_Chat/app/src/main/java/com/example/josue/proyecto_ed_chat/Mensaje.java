@@ -9,6 +9,7 @@ public class Mensaje
     private String Emisor;
     private boolean pertenecealusuariologeado;
     private String Receptor;
+    private String Clave;
 
     public String getReceptor() {
         return Receptor;
@@ -21,6 +22,7 @@ public class Mensaje
 
     public Mensaje(String mensaje, String emisor, boolean pertenecealusuariologeado) {
         this.mensaje = mensaje;
+        //Clave Nueva = new Clave();
         Emisor = emisor;
         this.pertenecealusuariologeado = pertenecealusuariologeado;
     }
