@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         final int id = item.getItemId();
         if(id == R.id.Buscar)
         {
-
+            Toast.makeText(getApplication().getBaseContext(),"La Seccion de Busqueda esta en construccion" ,Toast.LENGTH_SHORT).show();
         }else if(id == R.id.AdjuntarArchivos)
         {
             Toast.makeText(getApplication().getBaseContext(),"La Seccion de Adjuntar Archivos esta en Construccion" ,Toast.LENGTH_SHORT).show();

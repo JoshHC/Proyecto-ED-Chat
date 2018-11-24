@@ -26,8 +26,7 @@ public class Mensaje
         Emisor = emisor;
         Receptor = receptor;
 
-        //String ClaveCifrado = GenerarClaveCifrado(Emisor, Receptor);
-        String ClaveCifrado = "1001000000";
+        String ClaveCifrado = GenerarClaveCifrado(Emisor, Receptor);
         this.mensaje = Cifrado.Cifrar(mensaje, ClaveCifrado);
 
         this.pertenecealusuariologeado = pertenecealusuariologeado;

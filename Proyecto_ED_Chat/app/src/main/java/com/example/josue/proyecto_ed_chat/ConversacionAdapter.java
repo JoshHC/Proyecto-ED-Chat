@@ -63,8 +63,7 @@ public class ConversacionAdapter extends BaseAdapter
 
             SDES Cifrado = new SDES();
 
-            //String ClaveCifrado = GenerarClaveCifrado(message.getEmisor(), message.getReceptor());
-            String ClaveCifrado = "1001000000";
+            String ClaveCifrado = GenerarClaveCifrado(message.getEmisor(), message.getReceptor());
             String mensaje = Cifrado.Descifrar(message.getMensaje(), ClaveCifrado);
 
             mensajeEmisor.setText(mensaje);

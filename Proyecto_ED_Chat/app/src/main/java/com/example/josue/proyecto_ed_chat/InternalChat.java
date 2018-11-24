@@ -38,6 +38,7 @@ public class InternalChat extends AppCompatActivity {
     ImageButton BotonEnvio;
     String Emisor;
     String Receptor;
+    SearchView Buscador;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
